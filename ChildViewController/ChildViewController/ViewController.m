@@ -64,20 +64,29 @@
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     if (mainScroll.contentOffset.x < ScreenWidth) {
-        twoVC = [[TwoViewController alloc] init];
-        [self addChildViewController:twoVC];
-        twoVC.view.frame = CGRectMake(ScreenWidth, 0, ScreenWidth, ScreenHeight);
-        [mainScroll addSubview:twoVC.view];
+        if (twoVC == nil) {
+            twoVC = [[TwoViewController alloc] init];
+            [self addChildViewController:twoVC];
+            twoVC.view.frame = CGRectMake(ScreenWidth, 0, ScreenWidth, ScreenHeight);
+            [mainScroll addSubview:twoVC.view];
+        }
+        
     }else if (mainScroll.contentOffset.x < ScreenWidth*2){
-        threeVC = [[ThreeViewController alloc] init];
-        [self addChildViewController:threeVC];
-        threeVC.view.frame = CGRectMake(ScreenWidth*2, 0, ScreenWidth, ScreenHeight);
-        [mainScroll addSubview:threeVC.view];
+        if (threeVC == nil) {
+            threeVC = [[ThreeViewController alloc] init];
+            [self addChildViewController:threeVC];
+            threeVC.view.frame = CGRectMake(ScreenWidth*2, 0, ScreenWidth, ScreenHeight);
+            [mainScroll addSubview:threeVC.view];
+        }
+        
     }else if (mainScroll.contentOffset.x < ScreenWidth *3){
-        fourVC = [[FourViewController alloc]init];
-        [self addChildViewController:fourVC];
-        fourVC.view.frame = CGRectMake(ScreenWidth*3, 0, ScreenWidth, ScreenHeight);
-        [mainScroll addSubview:fourVC.view];
+        if (fourVC == nil) {
+            fourVC = [[FourViewController alloc]init];
+            [self addChildViewController:fourVC];
+            fourVC.view.frame = CGRectMake(ScreenWidth*3, 0, ScreenWidth, ScreenHeight);
+            [mainScroll addSubview:fourVC.view];
+        }
+        
     }
 
     
@@ -95,20 +104,28 @@
     mainScroll.contentOffset = CGPointMake(ScreenWidth*(btn.tag - 1000), 0);
     
         if (mainScroll.contentOffset.x == ScreenWidth) {
-            twoVC = [[TwoViewController alloc] init];
-            [self addChildViewController:twoVC];
-            twoVC.view.frame = CGRectMake(ScreenWidth, 0, ScreenWidth, ScreenHeight);
-            [mainScroll addSubview:twoVC.view];
+            if (twoVC == nil) {
+                twoVC = [[TwoViewController alloc] init];
+                [self addChildViewController:twoVC];
+                twoVC.view.frame = CGRectMake(ScreenWidth, 0, ScreenWidth, ScreenHeight);
+                [mainScroll addSubview:twoVC.view];
+            }
         }else if (mainScroll.contentOffset.x == ScreenWidth*2){
-            threeVC = [[ThreeViewController alloc] init];
-            [self addChildViewController:threeVC];
-            threeVC.view.frame = CGRectMake(ScreenWidth*2, 0, ScreenWidth, ScreenHeight);
-            [mainScroll addSubview:threeVC.view];
+            if (threeVC == nil) {
+                threeVC = [[ThreeViewController alloc] init];
+                [self addChildViewController:threeVC];
+                threeVC.view.frame = CGRectMake(ScreenWidth*2, 0, ScreenWidth, ScreenHeight);
+                [mainScroll addSubview:threeVC.view];
+            }
+            
         }else if (mainScroll.contentOffset.x == ScreenWidth *3){
-            fourVC = [[FourViewController alloc]init];
-            [self addChildViewController:fourVC];
-            fourVC.view.frame = CGRectMake(ScreenWidth*3, 0, ScreenWidth, ScreenHeight);
-            [mainScroll addSubview:fourVC.view];
+            if (fourVC == nil) {
+                fourVC = [[FourViewController alloc]init];
+                [self addChildViewController:fourVC];
+                fourVC.view.frame = CGRectMake(ScreenWidth*3, 0, ScreenWidth, ScreenHeight);
+                [mainScroll addSubview:fourVC.view];
+            }
+            
         }
     [titleScroll changeBtntitleColorWith:mainScroll.contentOffset.x/ScreenWidth+1000];
     
